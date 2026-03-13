@@ -31,15 +31,15 @@ hlint:
 # Build all components
 build:
     #!/usr/bin/env bash
-    cabal build all -O0 --enable-tests
+    cabal build all -O0 -fdev --enable-tests
 
 # Run unit tests
 unit match="":
     #!/usr/bin/env bash
     if [[ '{{ match }}' == "" ]]; then
-        cabal test unit-tests -O0 --test-show-details=direct
+        cabal test unit-tests -O0 -fdev --test-show-details=direct
     else
-        cabal test unit-tests -O0 \
+        cabal test unit-tests -O0 -fdev \
             --test-show-details=direct \
             --test-option=--match \
             --test-option="{{ match }}"
